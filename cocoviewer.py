@@ -162,10 +162,8 @@ def draw_masks(draw, objects, obj_categories, ignore, alpha):
     """
     masks = [obj["segmentation"] for obj in objects]
     # Draw masks
-    #print(masks)
     counter = 0
     for i, (c, m) in enumerate(zip(obj_categories, masks)):
-        print(counter)
         if i not in ignore:
             alpha = alpha
             fill = tuple(list(c[-1]) + [alpha])
@@ -174,11 +172,8 @@ def draw_masks(draw, objects, obj_categories, ignore, alpha):
             if isinstance(m, list):
                 # Placeholder for multiple masks in a single segmentation
                 for r in range(0, len(m)):
-                    print(r)
                     if len(m[r]) >= 2:
                         draw.polygon(m[r], outline=fill, fill=fill)
-                    else:
-                        print(m[r])
             # TODO: Fix problem with RLE
             # elif isinstance(m, dict):
             #     draw.polygon(m['counts'][1:-2], outline=c[-1], fill=fill)
