@@ -8,9 +8,15 @@
 `python3` `PIL`
 
 ## Installation
-
+- Clone the repository
 ```
 git clone https://github.com/trsvchn/coco-viewer.git
+```
+
+- Install all necessary dependencies. It is highly recommended to install dependencies in a virtual environment
+```console
+# For Python venv
+pip install -r requirements.txt
 ```
 
 ## Usage
@@ -29,7 +35,13 @@ optional arguments:
 ```
 
 ## Example:
-
+Using microstructure scans:
 ```bash
-python cocoviewer.py -i coco/images/val/val2017 -a coco/annotations/val/instances_val2017.json
+python cocoviewer.py -i input\images -a input\annotations\output.json
 ```
+
+Using official COCO dataset images:
+```bash 
+python cocoviewer.py -i coco\images -a coco\annotations\sample.json
+```
+
