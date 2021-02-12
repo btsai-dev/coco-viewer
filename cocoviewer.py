@@ -162,13 +162,23 @@ def draw_masks(draw, objects, obj_categories, ignore, alpha):
     """
     masks = [obj["segmentation"] for obj in objects]
     # Draw masks
+    #print(masks)
+    counter = 0
     for i, (c, m) in enumerate(zip(obj_categories, masks)):
+        print(counter)
         if i not in ignore:
             alpha = alpha
             fill = tuple(list(c[-1]) + [alpha])
             # Polygonal masks work fine
+
             if isinstance(m, list):
-                draw.polygon(m[0], outline=fill, fill=fill)
+                # Placeholder for multiple masks in a single segmentation
+                for r in range(0, len(m)):
+                    print(r)
+                    if len(m[r]) >= 2:
+                        draw.polygon(m[r], outline=fill, fill=fill)
+                    else:
+                        print(m[r])
             # TODO: Fix problem with RLE
             # elif isinstance(m, dict):
             #     draw.polygon(m['counts'][1:-2], outline=c[-1], fill=fill)
@@ -537,7 +547,8 @@ class Controller:
         # Update statusbar vars
         self.file_count_status.set(f"{str(self.data.images.n + 1)}/{self.data.images.max}")
         self.file_name_status.set(f"{self.data.current_image[-1]}")
-        self.description_status.set(f"{self.data.instances.get('info', '').get('description', '')}")
+        # TODO: FIX, MAYBE
+        # self.description_status.set(f"{self.data.instances.get('info', '').get('description', '')}")
         self.nobjects_status.set(f"objects: {len(self.current_img_obj_categories)}")
         self.ncategories_status.set(f"categories: {len(self.current_img_categories)}")
 
