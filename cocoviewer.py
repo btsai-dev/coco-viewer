@@ -387,7 +387,7 @@ class SlidersBar(ttk.Frame):
         self.bbox_slider.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
         # Label text size controller
-        self.label_slider = tk.Scale(self, label="label", from_=10, to=100, tickinterval=25, orient=tk.HORIZONTAL)
+        self.label_slider = tk.Scale(self, label="label", from_=0, to=100, tickinterval=25, orient=tk.HORIZONTAL)
         self.label_slider.pack(side=tk.LEFT, fill=tk.X, expand=True)
 
         # Mask transparency controller
